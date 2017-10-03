@@ -1447,6 +1447,5 @@ export {
   openTlfInChat,
   setupChatHandlers,
   startConversation,
-  setInitialConversation,
   untrustedInboxVisible,
 } from './creators'

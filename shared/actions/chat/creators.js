@@ -622,12 +622,6 @@ function openAttachmentPopup(
   return {payload: {message, currentPath}, type: 'chat:openAttachmentPopup'}
 }
 
-function setInitialConversation(
-  conversationIDKey: ?Constants.ConversationIDKey
-): Constants.SetInitialConversation {
-  return {payload: {conversationIDKey}, type: 'chat:setInitialConversation'}
-}
-
 function setPreviousConversation(
   conversationIDKey: ?Constants.ConversationIDKey
 ): Constants.SetPreviousConversation {
@@ -748,7 +742,6 @@ export {
   selectConversation,
   setInboxFilter,
   setInboxUntrustedState,
-  setInitialConversation,
   setLoaded,
   setNotifications,
   setPreviousConversation,
