@@ -34,10 +34,10 @@ type MembershipUpdateRes struct {
 }
 
 type RemoteConversationMetadata struct {
-	TopicName   string   `codec:"t"`
-	Snippet     string   `codec:"s"`
-	Headline    string   `codec:"h"`
-	WriterNames []string `codec:"w"`
+	TopicName    string                               `codec:"t"`
+	Snippet      string                               `codec:"s"`
+	Headline     string                               `codec:"h"`
+	Participants []chat1.ConversationLocalParticipant `codec:"p"`
 }
 
 type RemoteConversation struct {

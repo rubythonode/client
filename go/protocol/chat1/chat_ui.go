@@ -28,10 +28,10 @@ func (o UIPagination) DeepCopy() UIPagination {
 }
 
 type UnverifiedInboxUIItemMetadata struct {
-	ChannelName string   `codec:"channelName" json:"channelName"`
-	Headline    string   `codec:"headline" json:"headline"`
-	Snippet     string   `codec:"snippet" json:"snippet"`
-	WriterNames []string `codec:"writerNames" json:"writerNames"`
+	ChannelName  string                         `codec:"channelName" json:"channelName"`
+	Headline     string                         `codec:"headline" json:"headline"`
+	Snippet      string                         `codec:"snippet" json:"snippet"`
+	Participants []ConversationLocalParticipant `codec:"participants" json:"participants"`
 }
 
 func (o UnverifiedInboxUIItemMetadata) DeepCopy() UnverifiedInboxUIItemMetadata {
@@ -39,17 +39,17 @@ func (o UnverifiedInboxUIItemMetadata) DeepCopy() UnverifiedInboxUIItemMetadata 
 		ChannelName: o.ChannelName,
 		Headline:    o.Headline,
 		Snippet:     o.Snippet,
-		WriterNames: (func(x []string) []string {
+		Participants: (func(x []ConversationLocalParticipant) []ConversationLocalParticipant {
 			if x == nil {
 				return nil
 			}
-			var ret []string
+			var ret []ConversationLocalParticipant
 			for _, v := range x {
-				vCopy := v
+				vCopy := v.DeepCopy()
 				ret = append(ret, vCopy)
 			}
 			return ret
-		})(o.WriterNames),
+		})(o.Participants),
 	}
 }
 
@@ -124,24 +124,24 @@ func (o UnverifiedInboxUIItems) DeepCopy() UnverifiedInboxUIItems {
 }
 
 type InboxUIItem struct {
-	ConvID        string                        `codec:"convID" json:"convID"`
-	IsEmpty       bool                          `codec:"isEmpty" json:"isEmpty"`
-	Name          string                        `codec:"name" json:"name"`
-	Snippet       string                        `codec:"snippet" json:"snippet"`
-	Channel       string                        `codec:"channel" json:"channel"`
-	Headline      string                        `codec:"headline" json:"headline"`
-	Visibility    keybase1.TLFVisibility        `codec:"visibility" json:"visibility"`
-	Participants  []string                      `codec:"participants" json:"participants"`
-	Status        ConversationStatus            `codec:"status" json:"status"`
-	MembersType   ConversationMembersType       `codec:"membersType" json:"membersType"`
-	TeamType      TeamType                      `codec:"teamType" json:"teamType"`
-	Time          gregor1.Time                  `codec:"time" json:"time"`
-	Notifications *ConversationNotificationInfo `codec:"notifications,omitempty" json:"notifications,omitempty"`
-	CreatorInfo   *ConversationCreatorInfoLocal `codec:"creatorInfo,omitempty" json:"creatorInfo,omitempty"`
-	Version       ConversationVers              `codec:"version" json:"version"`
-	FinalizeInfo  *ConversationFinalizeInfo     `codec:"finalizeInfo,omitempty" json:"finalizeInfo,omitempty"`
-	Supersedes    []ConversationMetadata        `codec:"supersedes" json:"supersedes"`
-	SupersededBy  []ConversationMetadata        `codec:"supersededBy" json:"supersededBy"`
+	ConvID        string                         `codec:"convID" json:"convID"`
+	IsEmpty       bool                           `codec:"isEmpty" json:"isEmpty"`
+	Name          string                         `codec:"name" json:"name"`
+	Snippet       string                         `codec:"snippet" json:"snippet"`
+	Channel       string                         `codec:"channel" json:"channel"`
+	Headline      string                         `codec:"headline" json:"headline"`
+	Visibility    keybase1.TLFVisibility         `codec:"visibility" json:"visibility"`
+	Participants  []ConversationLocalParticipant `codec:"participants" json:"participants"`
+	Status        ConversationStatus             `codec:"status" json:"status"`
+	MembersType   ConversationMembersType        `codec:"membersType" json:"membersType"`
+	TeamType      TeamType                       `codec:"teamType" json:"teamType"`
+	Time          gregor1.Time                   `codec:"time" json:"time"`
+	Notifications *ConversationNotificationInfo  `codec:"notifications,omitempty" json:"notifications,omitempty"`
+	CreatorInfo   *ConversationCreatorInfoLocal  `codec:"creatorInfo,omitempty" json:"creatorInfo,omitempty"`
+	Version       ConversationVers               `codec:"version" json:"version"`
+	FinalizeInfo  *ConversationFinalizeInfo      `codec:"finalizeInfo,omitempty" json:"finalizeInfo,omitempty"`
+	Supersedes    []ConversationMetadata         `codec:"supersedes" json:"supersedes"`
+	SupersededBy  []ConversationMetadata         `codec:"supersededBy" json:"supersededBy"`
 }
 
 func (o InboxUIItem) DeepCopy() InboxUIItem {
@@ -153,13 +153,13 @@ func (o InboxUIItem) DeepCopy() InboxUIItem {
 		Channel:    o.Channel,
 		Headline:   o.Headline,
 		Visibility: o.Visibility.DeepCopy(),
-		Participants: (func(x []string) []string {
+		Participants: (func(x []ConversationLocalParticipant) []ConversationLocalParticipant {
 			if x == nil {
 				return nil
 			}
-			var ret []string
+			var ret []ConversationLocalParticipant
 			for _, v := range x {
-				vCopy := v
+				vCopy := v.DeepCopy()
 				ret = append(ret, vCopy)
 			}
 			return ret

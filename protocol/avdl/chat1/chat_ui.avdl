@@ -16,7 +16,7 @@ protocol chatUi {
     string channelName;
     string headline;
     string snippet;
-    array<string> writerNames;
+    array<ConversationLocalParticipant> participants;
   }
 
   record UnverifiedInboxUIItem {
@@ -46,7 +46,7 @@ protocol chatUi {
     string channel;
     string headline;
     keybase1.TLFVisibility visibility;
-    array<string> participants;
+    array<ConversationLocalParticipant> participants;
     ConversationStatus status;
     ConversationMembersType membersType;
     TeamType teamType;
