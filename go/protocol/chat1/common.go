@@ -424,6 +424,7 @@ const (
 	ConversationMemberStatus_REMOVED ConversationMemberStatus = 1
 	ConversationMemberStatus_LEFT    ConversationMemberStatus = 2
 	ConversationMemberStatus_PREVIEW ConversationMemberStatus = 3
+	ConversationMemberStatus_RESET   ConversationMemberStatus = 4
 )
 
 func (o ConversationMemberStatus) DeepCopy() ConversationMemberStatus { return o }
@@ -433,6 +434,7 @@ var ConversationMemberStatusMap = map[string]ConversationMemberStatus{
 	"REMOVED": 1,
 	"LEFT":    2,
 	"PREVIEW": 3,
+	"RESET":   4,
 }
 
 var ConversationMemberStatusRevMap = map[ConversationMemberStatus]string{
@@ -440,6 +442,7 @@ var ConversationMemberStatusRevMap = map[ConversationMemberStatus]string{
 	1: "REMOVED",
 	2: "LEFT",
 	3: "PREVIEW",
+	4: "RESET",
 }
 
 func (e ConversationMemberStatus) String() string {
